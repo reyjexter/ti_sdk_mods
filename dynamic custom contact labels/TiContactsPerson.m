@@ -226,12 +226,10 @@ static NSDictionary* multiValueLabels;
             if(label == NULL) {
                 NSLog(@"[DEBUG] Adding custom label");
                 ABMultiValueAddValueAndLabel(multiValue, (CFTypeRef)value, (CFStringRef)key, NULL);
-                break;
             }
-            
-            ABMultiValueAddValueAndLabel(multiValue, (CFTypeRef)value, (CFStringRef)label, NULL);
-            
-            
+            else {
+                ABMultiValueAddValueAndLabel(multiValue, (CFTypeRef)value, (CFStringRef)label, NULL);
+            }
 		}
 	}
 	
@@ -351,6 +349,7 @@ static NSDictionary* multiValueLabels;
 	}
 	// Multi-value property
 	else if (property = [[TiContactsPerson multiValueProperties] valueForKey:key]) {
+        
 		ABPropertyID propertyID = [property intValue];
 		ABMultiValueRef multiVal = ABRecordCopyValue([self record], propertyID);
 		id value = [NSNull null];
