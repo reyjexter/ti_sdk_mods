@@ -13,16 +13,17 @@ win.add(button);
 
 
 function performAddressBookFunction() {
-	var people = Ti.Contacts.getAllPeople();
-	var contactsToSave = [];
-	
-	for (var i=0; i<people.length; i++) {
-		contactsToSave.push(people[i]);
-		Ti.Contacts.removePerson(people[i]);
-	}
-	
-	Ti.Contacts.save(contactsToSave);
-	contactsToSave = [];
+	// sample stopped working on 5.1.2.GA
+	// var people = Ti.Contacts.getAllPeople();
+	// var contactsToSave = [];
+// 	
+	// for (var i=0; i<people.length; i++) {
+		// contactsToSave.push(people[i]);
+		// Ti.Contacts.removePerson(people[i]);
+	// }
+// 	
+	// Ti.Contacts.save(contactsToSave);
+	// contactsToSave = [];
 	
 	Ti.Contacts.createPerson({
 	  	firstName: 'Rey',
@@ -31,8 +32,12 @@ function performAddressBookFunction() {
 	  		mobile: ['+63 9176490093', '+63 9176490094'],
 	  		'Toll Free': ['1 800 1000000']
 	  	},
+	  	email: {
+	  		work: ['john@doe.com'],
+	  		'Personal Email': ['reyjexter@gmail.com']
+	  	},
 	 	url: {
-	  		homepage: ['http://www.kup4u.com'],
+	  		homepage: ['http://www.google.com'],
 	  		'Resume/CV/BIO': ['http://www.myresume.com'],
 	  		'Schedule as a Service': ['http://www.service.com']
 	  	}
